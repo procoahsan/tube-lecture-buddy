@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Topics from './Topics';
+import MyState from './MyState';
+import InterestSearch from './InterestSearch';
+import Analytics from './Analytics';
+import Translation from './Translation';
+import Clipping from './Clipping';
+import Content from './Content';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyState>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}>
+        <Route index element={<Home />} />
+      </Route>
+      <Route  path="/topics" element={< Topics />}></Route>
+      <Route exact path='/search' element={< InterestSearch />}></Route>  
+      <Route path = "/analytics" element={<Analytics />}></Route>
+      <Route path = "/translation" element={<Translation />}></Route>
+      <Route path = "/clipping" element={<Clipping />}></Route>
+      <Route path = "/content" element={<Content />}></Route>
+    </Routes>
+  </BrowserRouter>
+ </MyState>
+  
   );
 }
 
